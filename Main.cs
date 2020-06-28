@@ -10,7 +10,7 @@ namespace Bruchrechner
     {
         static void Main(string[] args)
         {
-            run();
+            Run();
         }
     }
 }

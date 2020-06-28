@@ -2,7 +2,7 @@
 {
     partial class main
     {
-        static void Kuerzen(Bruch bruch)
+        static void Kuerzen(ref Bruch bruch)
         {
             int ggt = BerechneGgt(bruch.nenner, bruch.zaehler);
             bruch.zaehler /= ggt;

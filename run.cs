@@ -4,11 +4,11 @@ namespace Bruchrechner
 {
     partial class main
     {
-        static void run()
+        static void Run()
         {
             Bruch bruchA;
             Bruch bruchB;
-            Bruch ergebnis;
+            Bruch ergebnis = new Bruch();
 
             int trennStrich1;
             int trennStrich2;
@@ -64,12 +64,6 @@ namespace Bruchrechner
                     case 4:
                         Console.SetCursorPosition(trennStrich1 + rechnung[4].Length + 3, 3);
                         break;
-                        //case 5:
-                        //    Console.SetCursorPosition(trennStrich1 + 6 + trennStrich2 + rechnung[5].Length, 3);
-                        //    break;
-                        //case 6:
-                        //    Console.SetCursorPosition(trennStrich1 + 6 + trennStrich2 + rechnung[6].Length, 3);
-                        //    break;
                 }
 
                 ConsoleKeyInfo c = Console.ReadKey(true);
@@ -88,14 +82,42 @@ namespace Bruchrechner
                 {
                     rechnung[currentElement] = rechnung[currentElement].Substring(0, rechnung[currentElement].Length > 0 ? rechnung[currentElement].Length - 1 : 0);
                 }
-                else if(c.Key == ConsoleKey.Enter)
+                else if (c.Key == ConsoleKey.Enter)
                 {
-                    switch ()
+                    bruchA = new Bruch { zaehler = Convert.ToInt32(rechnung[0]), nenner = Convert.ToInt32(rechnung[1]) };
+                    bruchB = new Bruch { zaehler = Convert.ToInt32(rechnung[3]), nenner = Convert.ToInt32(rechnung[4]) };
+                    if (BruchValid(bruchA) && BruchValid(bruchB))
                     {
-
+                        switch (rechnung[2])
+                        {
+                            case "+":
+                                Addition(ref bruchA, ref bruchB, ref ergebnis);
+                                break;
+                            case "-":
+                                Subtraktion(ref bruchA, ref bruchB, ref ergebnis);
+                                break;
+                            case "x":
+                                Multiplikation(ref bruchA, ref bruchB, ref ergebnis);
+                                break;
+                            case "/":
+                                Division(ref bruchA, ref bruchB, ref ergebnis);
+                                break;
+                            default:
+                                break;
+                        }
+                        Kuerzen(ref ergebnis);
+                        rechnung[5] = ergebnis.zaehler.ToString();
+                        rechnung[6] = ergebnis.nenner.ToString();
+                    }
+                    else
+                    {
+                        //Ungültiger Bruch
                     }
                 }
-
+                else
+                {
+                    rechnung[currentElement] += c.KeyChar;
+                }
             } while (menueAktiv);
         }
 
@@ -104,7 +126,5 @@ namespace Bruchrechner
             public int zaehler;
             public int nenner;
         }
-
-
     }
 }

@@ -48,12 +48,13 @@
     <Compile Include="Operationen\AufGleichenNenner.cs" />
     <Compile Include="Operationen\BerechneGgt.cs" />
     <Compile Include="Operationen\BerechneKgv.cs" />
+    <Compile Include="Operationen\BruchValid.cs" />
     <Compile Include="Operationen\Division.cs" />
     <Compile Include="Operationen\Kuerzen.cs" />
     <Compile Include="Operationen\Multiplikation.cs" />
     <Compile Include="Operationen\Subtraktion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="run.cs" />
+    <Compile Include="Run.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
