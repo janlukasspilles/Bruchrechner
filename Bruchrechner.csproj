@@ -50,6 +50,7 @@
     <Compile Include="Operationen\BerechneKgv.cs" />
     <Compile Include="Operationen\BruchValid.cs" />
     <Compile Include="Operationen\Division.cs" />
+    <Compile Include="Operationen\GetLongerLength.cs" />
     <Compile Include="Operationen\Kuerzen.cs" />
     <Compile Include="Operationen\Multiplikation.cs" />
     <Compile Include="Operationen\Subtraktion.cs" />
@@ -59,8 +60,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Menü\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

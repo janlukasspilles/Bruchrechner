@@ -1,4 +1,11 @@
-﻿namespace Bruchrechner
+﻿//Autor:        Jan-Lukas Spilles
+//Klasse:       IA119
+//Datei:        AufGleichenNenner.cs
+//Datum:        08.07.2020
+//Beschreibung: Bringt zwei Brüche auf den gleichen Nenner
+//Aenderungen:  08.07.2020 Erstellung
+
+namespace Bruchrechner
 {
     partial class main
     {

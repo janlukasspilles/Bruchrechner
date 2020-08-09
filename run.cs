@@ -14,29 +14,41 @@ namespace Bruchrechner
             int trennStrich2;
             int trennStrich3;
 
-
             string[] rechnung = { "", "", "", "", "", "", "" };
             int currentElement = 0;
+
+            int posZ1;
+            int posN1;
+            int posZ2;
+            int posN2;
+            int posZ3;
+            int posN3;
 
             bool menueAktiv = true;
             do
             {
                 Console.Clear();
-                trennStrich1 = rechnung[0].Length > rechnung[1].Length ? rechnung[0].Length : rechnung[1].Length;
-                trennStrich2 = rechnung[3].Length > rechnung[4].Length ? rechnung[3].Length : rechnung[4].Length;
-                trennStrich3 = rechnung[5].Length > rechnung[6].Length ? rechnung[5].Length : rechnung[6].Length;
+                trennStrich1 = GetLongerLength(rechnung[0], rechnung[1], 1);
+                trennStrich2 = GetLongerLength(rechnung[3], rechnung[4], 1);
+                trennStrich3 = GetLongerLength(rechnung[5], rechnung[6], 1);
 
-                trennStrich1 = trennStrich1 > 0 ? trennStrich1 : 1;
-                trennStrich2 = trennStrich2 > 0 ? trennStrich2 : 1;
-                trennStrich3 = trennStrich3 > 0 ? trennStrich3 : 1;
+                posZ1 = Console.CursorLeft + (trennStrich1 - rechnung[0].Length);
+                posN1 = Console.CursorLeft + (trennStrich1 - rechnung[1].Length);
+                posZ2 = posZ1 + rechnung[0].Length + 3 + (trennStrich2 - rechnung[3].Length);
+                posN2 = posN1 + rechnung[1].Length + 3 + (trennStrich2 - rechnung[4].Length);
+                posZ3 = posZ2 + rechnung[3].Length + 3 + (trennStrich3 - rechnung[5].Length);
+                posN3 = posN2 + rechnung[4].Length + 3 + (trennStrich3 - rechnung[6].Length);
+
+                rechnung[2] = rechnung[2].Length == 0 ? " " : rechnung[2];
+
 
                 Console.WriteLine("Bruchrechner");
 
-                Console.SetCursorPosition(Console.CursorLeft + (trennStrich1 > 1 ? trennStrich1 - rechnung[0].Length : 0), Console.CursorTop);
+                Console.SetCursorPosition(posZ1, Console.CursorTop);
                 Console.Write($"{rechnung[0]}");
-                Console.SetCursorPosition(Console.CursorLeft + 3 + (trennStrich2 - rechnung[3].Length), Console.CursorTop);
+                Console.SetCursorPosition(posZ2, Console.CursorTop);
                 Console.Write(rechnung[3]);
-                Console.SetCursorPosition(Console.CursorLeft + 3 + (trennStrich3 - rechnung[5].Length), Console.CursorTop);
+                Console.SetCursorPosition(posZ3, Console.CursorTop);
                 Console.Write(rechnung[5]);
                 Console.Write("\r\n");
 
@@ -47,11 +59,11 @@ namespace Bruchrechner
                 Console.Write($"{new string('─', trennStrich3)}");
                 Console.Write("\r\n");
 
-                Console.SetCursorPosition(Console.CursorLeft + (trennStrich1 - rechnung[1].Length), Console.CursorTop);
+                Console.SetCursorPosition(posN1, Console.CursorTop);
                 Console.Write($"{rechnung[1]}");
-                Console.SetCursorPosition(Console.CursorLeft + 3 + (trennStrich2 - rechnung[4].Length), Console.CursorTop);
+                Console.SetCursorPosition(posN2, Console.CursorTop);
                 Console.Write(rechnung[4]);
-                Console.SetCursorPosition(Console.CursorLeft + 3 + (trennStrich3 - rechnung[6].Length), Console.CursorTop);
+                Console.SetCursorPosition(posN3, Console.CursorTop);
                 Console.Write(rechnung[6]);
 
                 switch (currentElement)
@@ -63,7 +75,7 @@ namespace Bruchrechner
                         Console.SetCursorPosition(rechnung[1].Length, 3);
                         break;
                     case 2:
-                        Console.SetCursorPosition(trennStrich1 + 2, 2);
+                        Console.SetCursorPosition(trennStrich1 + 1, 2);
                         break;
                     case 3:
                         Console.SetCursorPosition(trennStrich1 + rechnung[3].Length + 3, 1);
@@ -138,7 +150,7 @@ namespace Bruchrechner
                     {
                         if (c.KeyChar == '+' || c.KeyChar == '-' || c.KeyChar == 'x' || c.KeyChar == '/')
                         {
-                            rechnung[currentElement] += c.KeyChar;
+                            rechnung[currentElement] = c.KeyChar.ToString();
                         }
                     }
                     else

@@ -1,4 +1,11 @@
-﻿namespace Bruchrechner
+﻿//Autor:        Jan-Lukas Spilles
+//Klasse:       IA119
+//Datei:        BerechneGgt.cs
+//Datum:        08.07.2020
+//Beschreibung: Berechnet den größten gemeinsamen Teiler von zwei Zahlen.
+//Aenderungen:  08.07.2020 Erstellung
+
+namespace Bruchrechner
 {
     partial class main
     {
